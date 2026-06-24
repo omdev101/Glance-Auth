@@ -1,4 +1,11 @@
 import os
+import sys
+try:
+    import face_recognition_models
+    print("SUCCESS: face_recognition_models imported!")
+except Exception as e:
+    print("CRITICAL IMPORT ERROR in face_recognition_models:", repr(e))
+    sys.stdout.flush()
 from flask import Flask, request, make_response, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager

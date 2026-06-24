@@ -9,6 +9,16 @@ Glance Auth is a facial recognition-based authentication and attendance tracking
 *   **Admin Dashboard**: Manage students, courses, enrollment requests, and view detailed attendance statistics and system settings.
 *   **Student Dashboard**: View personal attendance records, monthly statistics, and manage profile data including facial encodings.
 *   **Automated Scheduling**: Configure automatic marking of absent students at the end of the day.
+## Screenshots
+
+### Portal Entry (Light Mode)
+![Portal Entry Light](screenshots/portal-light.png)
+
+### Portal Entry (Dark Mode)
+![Portal Entry Dark](screenshots/portal-dark.png)
+
+### Admin Dashboard (Reports)
+![Admin Dashboard](screenshots/admin-dashboard.png)
 
 ## Technology Stack
 

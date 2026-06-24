@@ -72,26 +72,6 @@ npm run dev
 ```
 The frontend application will be available at `http://localhost:8080` (or another port depending on Vite's configuration).
 
-## Hosting and Deployment
-
-### Frontend Deployment (Cloudflare Pages)
-The React frontend is a static application and is perfectly suited for **Cloudflare Pages**, Vercel, or Netlify.
-
-To deploy to Cloudflare Pages:
-1. Connect your GitHub repository to your Cloudflare account.
-2. Set the framework preset to **Create React App** or **Vite**.
-3. Build command: `npm run build`
-4. Build output directory: `dist`
-
-### Backend Deployment (Important Note)
-The Python backend **CANNOT** be hosted on serverless platforms like Cloudflare Workers or Vercel Serverless. This is because the `face_recognition` library relies on `dlib`, which is a heavy C++ dependency that requires a traditional Linux environment with sufficient RAM.
-
-For the backend, you must use a VPS or Docker-supported PaaS such as:
-- **Railway**, **Render**, or **Fly.io** (Using a Dockerfile)
-- **DigitalOcean Droplet**, **AWS EC2**, or **Linode** (Running Linux)
-
-For production, ensure the Flask application is served using a production WSGI server such as Gunicorn, and allocate at least 1GB to 2GB of RAM to handle facial encoding matrices.
-
 ## Project Structure
 
 *   `/backend`: Contains the Python Flask API, authentication logic, database models, and computer vision modules.

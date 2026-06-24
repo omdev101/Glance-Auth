@@ -47,3 +47,6 @@ Thumbs.db
 
 # Cloudflare
 .wrangler/
+
+# Private Docs
+HOSTING_GUIDE.md

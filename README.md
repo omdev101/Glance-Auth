@@ -74,21 +74,23 @@ The frontend application will be available at `http://localhost:8080` (or anothe
 
 ## Hosting and Deployment
 
-### Backend Deployment
-For production deployment, the Flask application should be served using a production WSGI server such as Gunicorn or Waitress (for Windows), rather than the built-in Flask development server.
+### Frontend Deployment (Cloudflare Pages)
+The React frontend is a static application and is perfectly suited for **Cloudflare Pages**, Vercel, or Netlify.
 
-1.  Set the `FLASK_ENV` environment variable to `production`.
-2.  Configure a strong `JWT_SECRET_KEY` in the environment variables.
-3.  Ensure the server has adequate memory, as the face recognition models are memory-intensive.
+To deploy to Cloudflare Pages:
+1. Connect your GitHub repository to your Cloudflare account.
+2. Set the framework preset to **Create React App** or **Vite**.
+3. Build command: `npm run build`
+4. Build output directory: `dist`
 
-### Frontend Deployment
-The frontend can be built into a static bundle and served via Nginx, Apache, or any static hosting service (e.g., Vercel, Netlify).
+### Backend Deployment (Important Note)
+The Python backend **CANNOT** be hosted on serverless platforms like Cloudflare Workers or Vercel Serverless. This is because the `face_recognition` library relies on `dlib`, which is a heavy C++ dependency that requires a traditional Linux environment with sufficient RAM.
 
-```bash
-cd frontend
-npm run build
-```
-The compiled static files will be located in the `frontend/dist` directory.
+For the backend, you must use a VPS or Docker-supported PaaS such as:
+- **Railway**, **Render**, or **Fly.io** (Using a Dockerfile)
+- **DigitalOcean Droplet**, **AWS EC2**, or **Linode** (Running Linux)
+
+For production, ensure the Flask application is served using a production WSGI server such as Gunicorn, and allocate at least 1GB to 2GB of RAM to handle facial encoding matrices.
 
 ## Project Structure
 

@@ -43,7 +43,7 @@ const Index = () => {
   useEffect(() => {
     const checkBackendConnection = async () => {
       try {
-        await axios.get(`${API_URL}/api/health`, { timeout: 3000 });
+        await axios.get(`${API_URL}/api/health`, { timeout: 60000 });
         return true;
       } catch (error) {
         return false;
@@ -64,7 +64,7 @@ const Index = () => {
         
         const fullUrl = `${API_URL}/api/settings/live-attendance-status`;
         const response = await axios.get(fullUrl, {
-          timeout: 8000,
+          timeout: 60000,
           headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '0' }
         });
         

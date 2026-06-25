@@ -85,11 +85,17 @@ const LiveAttendancePage = () => {
   // Helper function to check if backend is available
   const checkBackendConnection = async () => {
     try {
-      const response = await axios.get(`${API_URL}/api/health`, { timeout: 3000 });
+      const response = await axios.get(`${API_URL}/api/health`, { timeout: 60000 });
       setBackendConnected(true);
       return true;
     } catch (error) {
-      console.log('Backend server seems to be offline');
+      console.log('Backend server seems to be offline or taking too long to respond');
+      // For Render deployments, cold starts can take a long time.
+      // Don't mark as offline immediately just due to a timeout.
+      if (error && typeof error === 'object' && 'code' in error && error.code === 'ECONNABORTED') {
+        // It's a timeout, the server might just be waking up
+        return true; 
+      }
       setBackendConnected(false);
       return false;
     }
@@ -172,7 +178,7 @@ const LiveAttendancePage = () => {
                   'Content-Type': 'application/json',
                   'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
-                timeout: 8000
+                timeout: 60000
               });
               
               const recognizeData = recognizeResponse.data;
@@ -370,7 +376,7 @@ const analyzeFaceFromCamera = async () => {
     }, {
       headers,
       // Add timeout to prevent hanging requests
-      timeout: 5000
+      timeout: 60000
     });
     
     console.log('Face analysis API response:', response.data);
@@ -404,7 +410,7 @@ const analyzeFaceFromCamera = async () => {
       }, {
         headers,
         // Add timeout to prevent hanging requests
-        timeout: 8000
+        timeout: 60000
       });
       
       const recognizeData = recognizeResponse.data;
@@ -788,7 +794,7 @@ const toggleLiveAttendanceVisibility = async (visible: boolean) => {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
-      timeout: 5000 // 5 second timeout
+      timeout: 60000 // 5 second timeout
     });
     
     console.log('API response:', response.data);
@@ -886,7 +892,7 @@ const toggleAutoSchedule = async (enabled: boolean) => {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
-      timeout: 5000 // 5 second timeout
+      timeout: 60000 // 5 second timeout
     });
     
     console.log('API response:', response.data);
@@ -971,7 +977,7 @@ useEffect(() => {
       
       const response = await axios.get(`${API_URL}/api/admin/settings/live-attendance`, {
         headers: { 'Authorization': `Bearer ${token}` },
-        timeout: 5000
+        timeout: 60000
       });
       
       console.log('Settings API response:', response.data);
@@ -1059,7 +1065,7 @@ useEffect(() => {
                   'Authorization': `Bearer ${token}`,
                   'Content-Type': 'application/json'
                 },
-                timeout: 5000
+                timeout: 60000
               }).catch(e => console.error('Auto schedule update error:', e));
             }
           } catch (error) {

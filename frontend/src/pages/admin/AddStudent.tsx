@@ -244,7 +244,7 @@ const AddStudent = () => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        timeout: 8000 // Increased timeout for more reliable processing
+        timeout: 60000 // Increased timeout for more reliable processing
       });
       
       const { is_valid, message, detected_orientation, orientation_match } = response.data;
@@ -480,7 +480,7 @@ const AddStudent = () => {
               'Authorization': `Bearer ${token}`,
               'Content-Type': 'application/json'
             },
-            timeout: 10000 // 10 second timeout for image validation
+            timeout: 60000 // 10 second timeout for image validation
           });
           
           if (response.data.is_valid) {

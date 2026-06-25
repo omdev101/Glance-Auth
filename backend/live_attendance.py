@@ -310,8 +310,10 @@ def handle_live_attendance_settings():
         if request.method == 'GET':
             # Return the current settings - get directly from DB
             from pymongo import MongoClient
-            client = MongoClient('mongodb://localhost:27017/')
-            db = client['attendance_system']
+            import os
+            mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/attendance_system')
+            client = MongoClient(mongo_uri)
+            db = client[os.getenv('MONGO_DBNAME', 'attendance_system')]
             
             # Get settings from MongoDB directly
             visibility_setting = db.settings.find_one({'key': 'live_attendance_visible'})
@@ -367,8 +369,10 @@ def handle_live_attendance_settings():
             
             # Update settings directly in MongoDB
             from pymongo import MongoClient
-            client = MongoClient('mongodb://localhost:27017/')
-            db = client['attendance_system']
+            import os
+            mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/attendance_system')
+            client = MongoClient(mongo_uri)
+            db = client[os.getenv('MONGO_DBNAME', 'attendance_system')]
             
             # IMPORTANT: First, remove any existing settings to avoid duplicates
             if is_visible is not None:

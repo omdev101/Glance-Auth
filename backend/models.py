@@ -10,10 +10,10 @@ from flask import current_app
 # Load environment variables
 load_dotenv()
 
-# MongoDB connection - simplified format
-mongo_uri = 'mongodb://localhost:27017/'
+# MongoDB connection - fetch from environment
+mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/attendance_system')
 client = MongoClient(mongo_uri)
-db = client['attendance_system']  # Access database using dictionary notation
+db = client[os.getenv('MONGO_DBNAME', 'attendance_system')]  # Access database using dictionary notation
 
 # Collections
 users = db.users
@@ -32,8 +32,9 @@ class Settings:
         """Get a setting by key"""
         try:
             # Get direct access to the settings collection
-            client = MongoClient('mongodb://localhost:27017/')
-            db = client['attendance_system']
+            mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/attendance_system')
+            client = MongoClient(mongo_uri)
+            db = client[os.getenv('MONGO_DBNAME', 'attendance_system')]
             setting = db.settings.find_one({'key': key})
             
             # Extract value
@@ -61,8 +62,9 @@ class Settings:
             current_app.logger.debug(f"Updating setting {key} to {value} (type: {type(value)})")
             
             # Get direct access to the settings collection
-            client = MongoClient('mongodb://localhost:27017/')
-            db = client['attendance_system']
+            mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/attendance_system')
+            client = MongoClient(mongo_uri)
+            db = client[os.getenv('MONGO_DBNAME', 'attendance_system')]
             
             # Delete any existing settings with this key to avoid duplicates
             db.settings.delete_many({'key': key})
@@ -88,8 +90,9 @@ class Settings:
         """Get live attendance settings as a dictionary"""
         try:
             # Get direct access to the settings collection
-            client = MongoClient('mongodb://localhost:27017/')
-            db = client['attendance_system']
+            mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/attendance_system')
+            client = MongoClient(mongo_uri)
+            db = client[os.getenv('MONGO_DBNAME', 'attendance_system')]
             
             # Get settings from MongoDB directly
             visibility_setting = db.settings.find_one({'key': 'live_attendance_visible'})

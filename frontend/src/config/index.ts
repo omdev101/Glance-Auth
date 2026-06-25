@@ -4,7 +4,7 @@
  */
 
 // Base API URL - change this based on environment
-export const API_URL = 'http://localhost:5000';
+export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 // Specific API endpoints
 export const ENDPOINTS = {

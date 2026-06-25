@@ -1,3 +1,5 @@
+import os
+from pymongo import MongoClient
 from flask import request, jsonify, current_app, make_response, Blueprint
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from bson.objectid import ObjectId
@@ -462,9 +464,9 @@ def get_live_attendance_status():
         current_app.logger.info("Getting live attendance status")
         
         # Get settings directly from the database to avoid any caching issues
-        from pymongo import MongoClient
-        client = MongoClient('mongodb://localhost:27017/')
-        db = client['attendance_system']
+        mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/attendance_system')
+        client = MongoClient(mongo_uri)
+        db = client[os.getenv('MONGO_DBNAME', 'attendance_system')]
         
         # Get settings from MongoDB directly
         visibility_setting = db.settings.find_one({'key': 'live_attendance_visible'})

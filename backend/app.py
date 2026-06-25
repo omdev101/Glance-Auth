@@ -36,9 +36,9 @@ app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER', os.getenv('MAIL_USERNAME'))
 
-# Add MongoDB configuration - use standard format to avoid dnspython requirement
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/'
-app.config['MONGO_DBNAME'] = 'attendance_system'
+# Add MongoDB configuration - fetch from environment for production
+app.config['MONGO_URI'] = os.getenv('MONGO_URI', 'mongodb://localhost:27017/attendance_system')
+app.config['MONGO_DBNAME'] = os.getenv('MONGO_DBNAME', 'attendance_system')
 
 # Initialize extensions
 jwt = JWTManager(app)

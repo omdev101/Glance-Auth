@@ -6,9 +6,10 @@ import CustomCard from '@/components/ui/CustomCard';
 import CustomButton from '@/components/ui/CustomButton';
 import { useToast } from '@/hooks/use-toast';
 import { CheckCircle, XCircle, CalendarClock, ChevronRight, User } from 'lucide-react';
-import axios from 'axios';
+import { api as axios } from '@/services/api';
 
-const BACKEND_URL = 'http://localhost:5000';
+import { API_URL } from '@/config';
+const BACKEND_URL = API_URL;
 
 const MarkAttendance = () => {
   const navigate = useNavigate();

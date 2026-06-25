@@ -22,7 +22,7 @@ import {
   EyeOff
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import axios from 'axios';
+import { api as axios } from '@/services/api';
 import { getToken } from '@/lib/auth';
 import { API_URL } from '@/config';
 import {

@@ -6,7 +6,7 @@ import CustomCard from '@/components/ui/CustomCard';
 import CustomButton from '@/components/ui/CustomButton';
 import { useToast } from '@/hooks/use-toast';
 import { getToken } from '@/lib/auth';
-import axios from 'axios';
+import { api as axios } from '@/services/api';
 import { API_URL } from '@/config';
 import { Plus, Edit, Trash2, Search, Loader2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';

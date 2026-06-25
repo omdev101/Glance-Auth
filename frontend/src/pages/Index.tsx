@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { User, ShieldCheck, Camera, Clock, Sun, Moon, Monitor, ScanFace } from 'lucide-react';
-import axios from 'axios';
+import { api as axios } from '@/services/api';
 import { API_URL } from '@/config';
 import { format } from 'date-fns';
 import { useTheme } from '@/components/ThemeProvider';

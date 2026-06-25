@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { getToken } from '@/lib/auth';
-import axios from 'axios';
+import { api as axios } from '@/services/api';
 import { API_URL, ENDPOINTS } from '@/config';
 import { Camera, CheckCircle, AlertCircle, Save, ChevronLeft, UserPlus, Loader2, XCircle } from 'lucide-react';
 import Webcam from 'react-webcam';

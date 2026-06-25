@@ -12,7 +12,7 @@ import { useAuth } from '@/App';
 import { studentService } from '@/services/api';
 import { Camera, AlertCircle, Upload, RefreshCw, CheckCircle, XCircle, Loader2 } from 'lucide-react';
 import Webcam from 'react-webcam';
-import axios from 'axios';
+import { api as axios } from '@/services/api';
 import { API_URL } from '@/config';
 
 const ProfileCompletion = () => {

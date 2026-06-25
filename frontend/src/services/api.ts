@@ -4,7 +4,7 @@ import { API_URL } from '@/config';
 console.log('Using API URL:', API_URL);
 
 // Create axios instance with base URL
-const api = axios.create({
+export const api = axios.create({
   baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',

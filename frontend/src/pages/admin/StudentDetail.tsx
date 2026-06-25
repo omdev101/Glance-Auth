@@ -7,7 +7,7 @@ import CustomButton from '@/components/ui/CustomButton';
 import { useToast } from '@/hooks/use-toast';
 import { getToken } from '@/lib/auth';
 import { ENDPOINTS } from '@/config';
-import axios from 'axios';
+import { api as axios } from '@/services/api';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';

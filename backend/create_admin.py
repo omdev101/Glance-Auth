@@ -1,13 +1,17 @@
 import bcrypt
 from pymongo import MongoClient
 import datetime
+import os
+from dotenv import load_dotenv
 
 def create_admin():
-    client = MongoClient('mongodb://localhost:27017/')
-    db = client['attendance_system']
+    load_dotenv()
+    mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/attendance_system')
+    client = MongoClient(mongo_uri)
+    db = client[os.getenv('MONGO_DBNAME', 'attendance_system')]
     
-    email = 'admin@example.com'
-    password = 'admin'
+    email = 'glanceaudit@builtbyom.in'
+    password = 'glanceauditadmin@123'
     
     # Check if admin already exists
     if db.users.find_one({'email': email}):

@@ -19,7 +19,7 @@ import {
 import { Users, UserCheck, UserX, CalendarCheck, BookOpen, Check, X, AlertCircle, Eye } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import axios from 'axios';
+import { api as axios } from '@/services/api';
 import { getToken } from '@/lib/auth';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from '@/components/ui/dialog';
 import { API_URL, ENDPOINTS } from '@/config';

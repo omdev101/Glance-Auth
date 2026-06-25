@@ -31,7 +31,7 @@ import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import axios from 'axios';
+import { api as axios } from '@/services/api';
 import { API_URL } from '@/config';
 import { getToken } from '@/lib/auth';
 import Webcam from 'react-webcam';

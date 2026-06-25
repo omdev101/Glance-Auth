@@ -4,7 +4,7 @@ import DashboardLayout from '@/components/DashboardLayout';
 
 import CustomCard from '@/components/ui/CustomCard';
 import CustomButton from '@/components/ui/CustomButton';
-import axios from 'axios';
+import { api as axios } from '@/services/api';
 import { getToken } from '@/lib/auth';
 import { useToast } from '@/hooks/use-toast';
 import { API_URL, ENDPOINTS } from '@/config';

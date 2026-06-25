@@ -52,7 +52,7 @@ interface CalendarDay {
   date: string;
   day: number;
   weekday: string;
-  status: 'present' | 'absent' | 'excused' | 'unknown';
+  status: 'present' | 'absent' | 'excused' | 'holiday' | 'unknown' | 'not_enrolled';
 }
 
 // Attendance summary interface

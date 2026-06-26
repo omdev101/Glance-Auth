@@ -1,6 +1,6 @@
 # Environment Setup Instructions
 
-This document provides instructions for setting up the environment variables required for the Face Attendance System.
+This document provides instructions for setting up the environment variables required for Glance Auth.
 
 ## Creating the .env File
 
@@ -46,7 +46,7 @@ To set up email for OTP verification:
    - Go to your Google Account > Security
    - Under "Signing in to Google," select "App passwords"
    - Select "Mail" as the app and "Other" as the device
-   - Enter "Face Attendance System" as the name
+   - Enter "Glance Auth" as the name
    - Click "Generate"
 4. Copy the 16-character password that appears
 5. Paste this password as the value for `MAIL_PASSWORD` in your `.env` file

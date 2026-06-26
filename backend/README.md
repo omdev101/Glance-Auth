@@ -1,4 +1,4 @@
-# Face-Based Attendance System - Backend
+# Glance Auth - Backend
 
 This is the backend for the online face-based attendance system. It uses Flask as the web framework and MongoDB as the database.
 
@@ -23,9 +23,9 @@ CORS_ORIGINS=http://localhost:5173
 MAIL_SERVER=smtp.gmail.com
 MAIL_PORT=587
 MAIL_USE_TLS=True
-MAIL_USERNAME=nxtzen71@gmail.com
-MAIL_PASSWORD=zokg ryrc awol ldbx
-MAIL_DEFAULT_SENDER=nxtzen71@gmail.com
+MAIL_USERNAME=your_email@gmail.com
+MAIL_PASSWORD=your_app_password
+MAIL_DEFAULT_SENDER=your_email@gmail.com
 ```
 
 2. Install required dependencies:
